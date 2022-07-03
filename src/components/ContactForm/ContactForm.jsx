@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 import { nanoid } from "nanoid";
 import { addContact } from "../../redux/contacts/contactsSlice";
 import { getStatus } from "../../services/statusApi";
+import { Form, Label, Input, Button } from "./ContactsForm.styled";
+import { AiOutlineUser, AiOutlineMessage } from "react-icons/ai";
 
 export const ContactsForm = () => {
   const [name, setName] = useState("");
@@ -46,17 +48,22 @@ export const ContactsForm = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Name
-          <input name="name" value={name} onChange={handleChange} type="text" />
-        </label>
-        <label>
-          Age
-          <input name="age" value={age} onChange={handleChange} type="text" />
-        </label>
-        <button type="submit"> Add Contact</button>
-      </form>
+      <Form onSubmit={handleSubmit}>
+        <Label>
+          <span>
+            <AiOutlineUser /> Name
+          </span>
+          <Input name="name" value={name} onChange={handleChange} type="text" />
+        </Label>
+        <Label>
+          <span>
+            <AiOutlineMessage />
+            Age
+          </span>
+          <Input name="age" value={age} onChange={handleChange} type="text" />
+        </Label>
+        <Button type="submit"> Add Contact</Button>
+      </Form>
     </>
   );
 };
